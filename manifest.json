@@ -1,0 +1,28 @@
+{
+  "name": "Refined Chess.com",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Small UI improvements for chess.com",
+  "homepage_url": "https://github.com/Blasz/refined-chess-com",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "default_locale": "en",
+  "permissions": [
+    "tts",
+    "https://www.chess.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.chess.com/*"
+      ],
+      "js": [
+        "src/inject/inject.js"
+      ]
+    }
+  ],
+  "minimum_chrome_version": "50"
+}
