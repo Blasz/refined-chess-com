@@ -5,3 +5,4 @@ Small UI improvements for [Chess.com](https://www.chess.com)
 Features
 
 * Colour the winner/loser in previous games
+* Prevents title from flashing when it's your move in daily games

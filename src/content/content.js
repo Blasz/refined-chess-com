@@ -1,4 +1,5 @@
 // import 'babel-polyfill';
+import withObserver from '../lib/withObserver';
 
 const selectors = {
   usernames: '#sidebar .username',
@@ -8,13 +9,15 @@ const selectors = {
 
 const regexes = {
   gameUrl: /www.chess.com\/(live|daily)\/game\/\d+/,
+  homeUrl: /www.chess.com$/,
+  dailyHomeUrl: /www.chess.com\/daily$/,
   winner: /(.*) won /,
+  yourMove: /^(YOUR MOVE)|(_{3,})/,
 };
 
-function colourResult() {
+/** Colours the player divs of past live/daily games according to whether they won or lost. */
+function colourResult({ observer }) {
   let winner;
-
-  const observer = new MutationObserver(colourResult);
 
   const gameResult = document.querySelector(selectors.gameResult);
   if (!gameResult) return;
@@ -24,7 +27,7 @@ function colourResult() {
     [, winner] = result;
     observer.disconnect();
   } else {
-    observer.observe(gameResult, { childList: true });
+    observer.observe(gameResult, { subtree: true, childList: true, characterData: true });
     return;
   }
 
@@ -39,9 +42,32 @@ function colourResult() {
   });
 }
 
+function onTitleChange(origTitle, { records, observer }) {
+  const titleEl = document.querySelector('title');
+  observer.observe(titleEl, { childList: true, characterData: true, subtree: true });
+
+  if (records.length > 0) {
+    const currentTitle = records[0].type === 'childList' ? records[0].target.innerText : records[0].target.nodeValue;
+    if (regexes.yourMove.test(currentTitle)) {
+      titleEl.innerText = origTitle;
+    }
+  }
+}
+
+/** Prevents the title from flashing when it's your move in a daily game. */
+function preventTitleFlash() {
+  const origTitle = document.querySelector('title').innerText;
+
+  withObserver(onTitleChange, origTitle);
+}
+
 function main() {
   if (regexes.gameUrl.test(window.location.href)) {
-    colourResult();
+    withObserver(colourResult);
+  }
+  if (regexes.homeUrl.test(window.location.href) ||
+      regexes.dailyHomeUrl.test(window.location.href)) {
+    preventTitleFlash();
   }
 }
 
