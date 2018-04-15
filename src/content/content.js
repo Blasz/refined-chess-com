@@ -1,10 +1,16 @@
 // import 'babel-polyfill';
 import withObserver from '../lib/withObserver';
 
+const classes = {
+  placeholder: 'refined-chess-placeholder',
+};
+
 const selectors = {
   usernames: '#sidebar .username',
   gameResult: '.game-info-item[ng-bind="vm.model.game.result_message"]',
   playerDetails: '.about-player',
+  chessboard: '.chess_viewer',
+  placeholder: `.${classes.placeholder}`,
 };
 
 const regexes = {
@@ -61,6 +67,35 @@ function preventTitleFlash() {
   withObserver(onTitleChange, origTitle);
 }
 
+function piecePlaceholders({ records, observer }) {
+  const chessboard = document.querySelector(selectors.chessboard);
+  const dragging = 'chess_com_dragging';
+  if (!chessboard) {
+    observer.disconnect();
+    return;
+  }
+  observer.observe(chessboard, { subtree: true, attributes: true, attributeOldValue: true,  attributeFilter: ['class'] });
+
+  if (records.length > 0) {
+    records.forEach((record) => {
+      const node = record.target;
+      if (node.classList.contains(dragging)) {
+        const placeholderNode = node.cloneNode();
+        placeholderNode.classList.add(classes.placeholder);
+        placeholderNode.style.opacity = 0.3;
+        // Insert placeholder after original piece
+        node.parentNode.insertBefore(placeholderNode, node.nextSibling);
+      } else if (typeof record.oldValue === 'string' && record.oldValue.indexOf(dragging) >= 0) {
+        const placeholderNode = record.target.parentNode.querySelector(selectors.placeholder);
+
+        if (placeholderNode) {
+          placeholderNode.remove();
+        }
+      }
+    });
+  }
+}
+
 function main() {
   if (regexes.gameUrl.test(window.location.href)) {
     withObserver(colourResult);
@@ -69,6 +104,7 @@ function main() {
       regexes.dailyHomeUrl.test(window.location.href)) {
     preventTitleFlash();
   }
+  withObserver(piecePlaceholders);
 }
 
 main();
