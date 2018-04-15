@@ -1,25 +1,30 @@
+// import 'babel-polyfill';
+
 const selectors = {
   usernames: '#sidebar .username',
-  gameInfo: '.game-info-item',
+  gameResult: '.game-info-item[ng-bind="vm.model.game.result_message"]',
   playerDetails: '.about-player',
 };
 
 const regexes = {
-  gameUrl: /www.chess.com\/live\/\game\/\d+/,
-  winner: /(.*) won by /,
+  gameUrl: /www.chess.com\/(live|daily)\/game\/\d+/,
+  winner: /(.*) won /,
 };
-
-
-const gameInfo = document.querySelectorAll(selectors.gameInfo);
-const winnerEl = Array.from(gameInfo).find(el => regexes.winner.test(el.innerText));
 
 function colourResult() {
   let winner;
-  if (winnerEl) {
-    const result = winnerEl.innerText.match(regexes.winner);
+
+  const observer = new MutationObserver(colourResult);
+
+  const gameResult = document.querySelector(selectors.gameResult);
+  if (!gameResult) return;
+
+  const result = gameResult.innerText.match(regexes.winner);
+  if (result) {
     [, winner] = result;
+    observer.disconnect();
   } else {
-    console.log('Could not find winner');
+    observer.observe(gameResult, { childList: true });
     return;
   }
 

@@ -1,0 +1,16 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": [
+            "chrome >= 50"
+          ]
+        },
+        "useBuiltins": true
+      }
+    ]
+  ],
+  "plugins": ["transform-runtime"],
+}

@@ -9,7 +9,6 @@
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
-  "default_locale": "en",
   "permissions": [
     "tts",
     "https://www.chess.com/*"
@@ -20,7 +19,7 @@
         "https://www.chess.com/*"
       ],
       "js": [
-        "src/inject/inject.js"
+        "content.bundle.js"
       ]
     }
   ],

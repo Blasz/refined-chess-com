@@ -6,5 +6,6 @@ module.exports = {
     "rules": {
       "no-console": "off",
       "no-param-reassign": "off",
+      "no-restricted-syntax": "off",
     },
 };
