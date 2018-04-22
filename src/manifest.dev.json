@@ -24,9 +24,6 @@
       ],
       "js": [
         "content.bundle.js"
-      ],
-      "css": [
-        "content.css"
       ]
     }
   ],

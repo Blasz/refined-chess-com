@@ -1,8 +1,0 @@
-$horizontalMenuHeight: 44px;
-
-@media only screen and (min-width: 700px) {
-  /* Fix chat window overflowing viewport */
-  .live-app {
-    height: calc(100% - #{$horizontalMenuHeight});
-  }
-}
