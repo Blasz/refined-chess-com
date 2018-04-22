@@ -1,5 +1,6 @@
 import withObserver from '../lib/withObserver';
 import { regexes } from '../lib/constants';
+import { homePage, dailyPage } from '../lib/pages';
 
 function onTitleChange(origTitle, { records, observer }) {
   const titleEl = document.querySelector('title');
@@ -14,8 +15,14 @@ function onTitleChange(origTitle, { records, observer }) {
 }
 
 /** Prevents the title from flashing when it's your move in a daily game. */
-export default function preventTitleFlash() {
+function preventTitleFlash() {
   const origTitle = document.querySelector('title').innerText;
 
   withObserver(onTitleChange, origTitle);
 }
+
+export default {
+  fn: preventTitleFlash,
+  withObserver: false,
+  pages: [homePage, dailyPage],
+};

@@ -16,9 +16,6 @@ export const selectors = {
 };
 
 export const regexes = {
-  gameUrl: /www.chess.com\/(live|daily)\/game\/\d+/,
-  homeUrl: /www.chess.com$/,
-  dailyUrl: /www.chess.com\/daily/,
   winner: /(.*) won /,
   yourMove: /^(YOUR MOVE)|(_{3,})/,
 };

@@ -1,7 +1,7 @@
 import { selectors, classes } from '../lib/constants';
 
 /** Adds placeholders for pieces in their original square when you are dragging them */
-export default function piecePlaceholders({ records, observer }) {
+function piecePlaceholders({ records, observer }) {
   const chessboard = document.querySelector(selectors.chessboard);
   const dragging = 'chess_com_dragging';
   if (!chessboard) {
@@ -34,3 +34,8 @@ export default function piecePlaceholders({ records, observer }) {
     });
   }
 }
+
+export default {
+  fn: piecePlaceholders,
+  withObserver: true,
+};

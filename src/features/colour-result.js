@@ -1,7 +1,8 @@
 /** Colours the player divs of past live/daily games according to whether they won or lost. */
 import { selectors, regexes } from '../lib/constants';
+import { gamePage } from '../lib/pages';
 
-export default function colourResult({ observer }) {
+function colourResult({ observer }) {
   let winner;
 
   const gameResult = document.querySelector(selectors.gameResult);
@@ -26,3 +27,9 @@ export default function colourResult({ observer }) {
     playerDetailsEl.style.backgroundColor = username === winner ? winnerColour : loserColour;
   });
 }
+
+export default {
+  fn: colourResult,
+  withObserver: true,
+  pages: [gamePage],
+};

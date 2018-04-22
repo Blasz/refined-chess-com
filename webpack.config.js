@@ -31,7 +31,7 @@ module.exports = (env) => {
         },
       ],
     },
-    devtool: env.production ? false : 'cheap-module-eval-source-map',
+    devtool: env.production ? false : 'cheap-source-map',
     mode: env.production ? 'production' : 'development',
   };
 };
