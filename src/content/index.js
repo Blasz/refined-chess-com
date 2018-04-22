@@ -5,6 +5,8 @@ import colourResult from '../features/colour-result';
 import preventTitleFlash from '../features/prevent-title-flash';
 import piecePlaceholders from '../features/piece-placeholders';
 
+import chatWindowOverflow from '../fixes/chat-window-overflow';
+
 function main() {
   chrome.runtime.sendMessage({ type: messageTypes.showPage });
   if (regexes.gameUrl.test(window.location.href)) {
@@ -15,6 +17,7 @@ function main() {
     preventTitleFlash();
   }
   withObserver(piecePlaceholders);
+  chatWindowOverflow();
 }
 
 main();
