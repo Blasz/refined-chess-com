@@ -5,14 +5,18 @@
   "description": "Small UI improvements for chess.com",
   "homepage_url": "https://github.com/Blasz/refined-chess-com",
   "icons": {
-    "16": "icons/icon16.png",
-    "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
   "permissions": [
-    "tts",
     "https://www.chess.com/*"
   ],
+  "background": {
+    "scripts": [
+      "background.bundle.js"
+    ],
+    "persistent": false
+  },
+  "page_action": {},
   "content_scripts": [
     {
       "matches": [
@@ -20,6 +24,9 @@
       ],
       "js": [
         "content.bundle.js"
+      ],
+      "css": [
+        "content.css"
       ]
     }
   ],

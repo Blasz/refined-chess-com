@@ -3,6 +3,9 @@ module.exports = {
     "env": {
       "browser": true,
     },
+    "globals": {
+      "chrome": false,
+    },
     "rules": {
       "no-console": "off",
       "no-param-reassign": "off",
