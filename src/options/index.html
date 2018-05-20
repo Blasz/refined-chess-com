@@ -30,6 +30,11 @@
       display: block;
       padding-bottom: 4px;
     }
+    label.range {
+      display: flex;
+      flex-direction: column-reverse;
+      padding-top: 4px;
+    }
     button {
       margin: 16px 0;
     }
@@ -46,7 +51,10 @@
       <h3>Fixes</h3>
       <div id="fixes-container"></div>
     </div>
-    <button id="save">Save</button>
+    <div id="actions">
+      <button id="save">Save</button>
+      <button id="reset">Reset</button>
+    </div>
     <div id="save-msg"></div>
   </div>
 

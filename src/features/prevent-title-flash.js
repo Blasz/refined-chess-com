@@ -29,5 +29,8 @@ export default {
     id: 'prevent-title-flash',
     name: 'Prevent your move window title flash',
     description: 'Prevent the window title from flashing YOUR MOVE when it is your move in a daily game',
+    default: {
+      enabled: true,
+    },
   },
 };

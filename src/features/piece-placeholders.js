@@ -42,5 +42,8 @@ export default {
     id: 'piece-placeholders',
     name: 'Piece placeholders',
     description: 'Show a transparent piece placeholder for the current piece being dragged',
+    default: {
+      enabled: true,
+    },
   },
 };

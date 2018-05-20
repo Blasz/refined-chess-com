@@ -36,5 +36,8 @@ export default {
     id: 'colour-result',
     name: 'Colour result',
     description: 'Colour the winner of previous games to make it easier to see the result',
+    default: {
+      enabled: true,
+    },
   },
 };

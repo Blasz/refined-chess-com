@@ -18,6 +18,7 @@ module.exports = (env) => {
         { from: 'icons', to: 'icons' },
         { from: 'src/options/index.html', to: 'options.html' },
         { from: 'src/popup/index.html', to: 'popup.html' },
+        { from: 'src/scripts', to: 'scripts' },
       ]),
     ],
     output: {

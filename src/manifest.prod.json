@@ -18,7 +18,9 @@
     "persistent": false
   },
   "options_page": "options.html",
-  "page_action": {},
+  "page_action": {
+    "default_popup": "popup.html"
+  },
   "content_scripts": [
     {
       "matches": [
@@ -28,6 +30,9 @@
         "content.bundle.js"
       ]
     }
+  ],
+  "web_accessible_resources": [
+    "scripts/adjustVolume.js"
   ],
   "minimum_chrome_version": "50"
 }

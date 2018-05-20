@@ -19,5 +19,8 @@ export default {
     id: 'chat-window-overflow',
     name: 'Fix chat window overflow',
     description: 'Fix overflowing chat box in live games for screen widths 700 - 960px',
+    default: {
+      enabled: true,
+    },
   },
 };
