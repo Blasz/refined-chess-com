@@ -1,6 +1,6 @@
 import { injectGlobal } from '../lib/utils';
 
-export default function chatWindowOverflow() {
+function chatWindowOverflow() {
   const horizontalMenuHeight = '44px';
   injectGlobal(`
     @media only screen and (min-width: 700px) {
@@ -11,3 +11,13 @@ export default function chatWindowOverflow() {
     }
   `);
 }
+
+export default {
+  fn: chatWindowOverflow,
+  withObserver: false,
+  settings: {
+    id: 'chat-window-overflow',
+    name: 'Fix chat window overflow',
+    description: 'Fix overflowing chat box in live games for screen widths 700 - 960px',
+  },
+};

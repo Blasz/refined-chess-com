@@ -38,4 +38,9 @@ function piecePlaceholders({ records, observer }) {
 export default {
   fn: piecePlaceholders,
   withObserver: true,
+  settings: {
+    id: 'piece-placeholders',
+    name: 'Piece placeholders',
+    description: 'Show a transparent piece placeholder for the current piece being dragged',
+  },
 };

@@ -1,18 +1,15 @@
 // import 'babel-polyfill';
-import applyFeature from '../lib/applyFeature';
+import applyMod from '../lib/applyMod';
 import { messageTypes } from '../lib/constants';
-import colourResult from '../features/colour-result';
-import preventTitleFlash from '../features/prevent-title-flash';
-import piecePlaceholders from '../features/piece-placeholders';
-
-import chatWindowOverflow from '../fixes/chat-window-overflow';
+import * as features from '../features';
+import * as fixes from '../fixes';
 
 function main() {
   chrome.runtime.sendMessage({ type: messageTypes.showPage });
-  applyFeature(colourResult);
-  applyFeature(preventTitleFlash);
-  applyFeature(piecePlaceholders);
-  chatWindowOverflow();
+  chrome.storage.sync.get(null, (settings) => {
+    Object.keys(features).forEach((f) => { applyMod(features[f], settings); });
+    Object.keys(fixes).forEach((f) => { applyMod(fixes[f], settings); });
+  });
 }
 
 main();

@@ -18,3 +18,4 @@ Roadmap
 * Volume control - Control volume of chess moves
 * Better visual message notifications - Sometimes there is no indication that you've received a message in a daily game or similar
 * Sync badge notifications across tabs
+* Remove 'course completed' notifications when reviewing completed course lessons

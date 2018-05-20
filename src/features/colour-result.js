@@ -32,4 +32,9 @@ export default {
   fn: colourResult,
   withObserver: true,
   pages: [gamePage],
+  settings: {
+    id: 'colour-result',
+    name: 'Colour result',
+    description: 'Colour the winner of previous games to make it easier to see the result',
+  },
 };

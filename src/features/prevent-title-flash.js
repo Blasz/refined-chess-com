@@ -1,6 +1,6 @@
 import withObserver from '../lib/withObserver';
 import { regexes } from '../lib/constants';
-import { homePage, dailyPage } from '../lib/pages';
+import { homePage, dailyPage, userPage } from '../lib/pages';
 
 function onTitleChange(origTitle, { records, observer }) {
   const titleEl = document.querySelector('title');
@@ -24,5 +24,10 @@ function preventTitleFlash() {
 export default {
   fn: preventTitleFlash,
   withObserver: false,
-  pages: [homePage, dailyPage],
+  pages: [homePage, dailyPage, userPage],
+  settings: {
+    id: 'prevent-title-flash',
+    name: 'Prevent your move window title flash',
+    description: 'Prevent the window title from flashing YOUR MOVE when it is your move in a daily game',
+  },
 };
