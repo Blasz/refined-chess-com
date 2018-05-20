@@ -3,22 +3,52 @@
 <head>
   <title>Refined Chess.com Options</title>
   <style>
+    body {
+      padding: 8px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+    }
+    h1 img {
+      width: 48px;
+      height: 48px;
+    }
+    #outer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h3 {
+      text-align: center;
+    }
     label {
       display: block;
       padding-bottom: 4px;
     }
+    button {
+      margin: 16px 0;
+    }
   </style>
 </head>
 <body>
-  <h1>Refined Chess.com Options</h1>
-  <h2>Features</h2>
-  <div id="features-container"></div>
+  <div id="outer">
+    <h1><img src="icons/icon128.png" /> Refined Chess.com</h1>
+    <h2>Options</h2>
+    <div id="inner">
+      <h3>Features</h3>
+      <div id="features-container"></div>
 
-  <h2>Fixes</h2>
-  <div id="fixes-container"></div>
-
-  <button id="save">Save</button>
-  <div id="save-msg"></div>
+      <h3>Fixes</h3>
+      <div id="fixes-container"></div>
+    </div>
+    <button id="save">Save</button>
+    <div id="save-msg"></div>
+  </div>
 
   <script src="options.bundle.js"></script>
 </body>

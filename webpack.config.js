@@ -9,6 +9,7 @@ module.exports = (env) => {
       content: ['./src/content'],
       background: ['./src/background'],
       options: ['./src/options'],
+      popup: ['./src/popup'],
     },
     plugins: [
       new CleanWebpackPlugin(['dist']),
@@ -16,6 +17,7 @@ module.exports = (env) => {
         { from: `src/manifest.${shortEnv}.json`, to: 'manifest.json' },
         { from: 'icons', to: 'icons' },
         { from: 'src/options/index.html', to: 'options.html' },
+        { from: 'src/popup/index.html', to: 'popup.html' },
       ]),
     ],
     output: {

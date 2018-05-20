@@ -18,7 +18,9 @@
     "persistent": false
   },
   "options_page": "options.html",
-  "page_action": {},
+  "page_action": {
+    "default_popup": "popup.html"
+  },
   "content_scripts": [
     {
       "matches": [
